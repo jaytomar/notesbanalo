@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/notesbanalo/static/css/main.495afa07.chunk.css",
+    "main.js": "/notesbanalo/static/js/main.c4c5d842.chunk.js",
+    "main.js.map": "/notesbanalo/static/js/main.c4c5d842.chunk.js.map",
+    "runtime-main.js": "/notesbanalo/static/js/runtime-main.74115277.js",
+    "runtime-main.js.map": "/notesbanalo/static/js/runtime-main.74115277.js.map",
+    "static/js/2.bd04299d.chunk.js": "/notesbanalo/static/js/2.bd04299d.chunk.js",
+    "static/js/2.bd04299d.chunk.js.map": "/notesbanalo/static/js/2.bd04299d.chunk.js.map",
+    "static/js/3.ec30f748.chunk.js": "/notesbanalo/static/js/3.ec30f748.chunk.js",
+    "static/js/3.ec30f748.chunk.js.map": "/notesbanalo/static/js/3.ec30f748.chunk.js.map",
+    "index.html": "/notesbanalo/index.html",
+    "static/css/main.495afa07.chunk.css.map": "/notesbanalo/static/css/main.495afa07.chunk.css.map",
+    "static/js/2.bd04299d.chunk.js.LICENSE.txt": "/notesbanalo/static/js/2.bd04299d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.74115277.js",
+    "static/js/2.bd04299d.chunk.js",
+    "static/css/main.495afa07.chunk.css",
+    "static/js/main.c4c5d842.chunk.js"
+  ]
+}
