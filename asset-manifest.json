@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/notesbanalo/static/css/main.495afa07.chunk.css",
-    "main.js": "/notesbanalo/static/js/main.b1df539d.chunk.js",
-    "main.js.map": "/notesbanalo/static/js/main.b1df539d.chunk.js.map",
+    "main.js": "/notesbanalo/static/js/main.47f5ad5f.chunk.js",
+    "main.js.map": "/notesbanalo/static/js/main.47f5ad5f.chunk.js.map",
     "runtime-main.js": "/notesbanalo/static/js/runtime-main.74115277.js",
     "runtime-main.js.map": "/notesbanalo/static/js/runtime-main.74115277.js.map",
     "static/js/2.bd04299d.chunk.js": "/notesbanalo/static/js/2.bd04299d.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.74115277.js",
     "static/js/2.bd04299d.chunk.js",
     "static/css/main.495afa07.chunk.css",
-    "static/js/main.b1df539d.chunk.js"
+    "static/js/main.47f5ad5f.chunk.js"
   ]
 }
