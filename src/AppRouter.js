@@ -8,14 +8,14 @@ const AppRouter = ({isLogged, userObj}) => {
         <Switch>
           {isLogged ? (
             <>
-              <Route exact path='/'>
+              <Route exact path=''>
               <div className="">
               <Main userObj={userObj}/>
               </div>
               </Route>
             </>
           ):(
-            <Route exact path='/'>
+            <Route exact path=''>
               <Auth />
             </Route>
             )
