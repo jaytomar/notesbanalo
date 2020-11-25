@@ -12,8 +12,9 @@ function onMenuSelect(e){
             document.execCommand('formatblock',false,style)
         }
     }
-    else if(style==='H1' || style==='H2' || style==='H3'){
-        if(node==='B' || node==='I' || node==='STRIKE' || node==='U'){
+    else if((style==='H1' || style==='H2' || style==='H3') && node!=='LI'){
+        if(node==='B' || node==='I' || node==='STRIKE' || node==='U' ){
+        
             document.execCommand('removeFormat',false);
         }
         document.execCommand('formatblock',false,style)
@@ -51,9 +52,6 @@ const SelectMenu = (props) => {
                 <button onClick={onMenuSelect} value='H3'> <b>H3</b></button>
                 <button onClick={onMenuSelect} value='insertOrderedList'> <i className="fas fa-list-ol"></i> </button>
                 <button onClick={onMenuSelect} value='insertUnorderedList'> <i className="fas fa-list-ul"></i></button>
-                <button onClick={onMenuSelect} value='justifyLeft'> <i className="fas fa-align-left"></i> </button>
-                <button onClick={onMenuSelect} value='justifyCenter'><i className="fas fa-align-center"></i> </button>
-                <button onClick={onMenuSelect} value='justifyRight'> <i className="fas fa-align-right"></i></button>
                 <button onClick={onMenuSelect} value='hiliteColor'> <i className="fas fa-highlighter"></i></button>
             </div>
         </div>

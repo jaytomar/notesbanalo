@@ -46,17 +46,17 @@ const newDoc = () => {
   setCount(count+1)
   var uuid = uuidv4()
   var data = {
+      user : userObj.user.uid,
       id : uuid,
       createdAt: Date.now(),
       name : 'document ' +(count),
       doc : 'You can highlight this text to apply styles. type the period (.) key twice for more option'
   }
   dbService
-  .collection('users')
-  .doc(userObj.user.uid)
   .collection('notes')
   .doc(uuid)
   .set(data)
+
   fetchDocs()
 }
 
@@ -66,7 +66,7 @@ useEffect(() => {
 
 const fetchDocs = () =>{
   if(userObj){
-    dbService.collection('users').doc(userObj.user.uid).collection('notes').get()
+    dbService.collection('notes').where("user", "==", userObj.user.uid).get()
     .then((doc)=>{
       const obj = doc.docs.map((item)=>{
         return item.data()

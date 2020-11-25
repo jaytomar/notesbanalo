@@ -16,7 +16,8 @@ const onImageUpload = (e) => {
     const theFile= files[0];
     const reader= new FileReader();
     reader.onloadend = (finish) => {
-        document.execCommand('insertHTML', false, `<div contenteditable='false'><img src=${reader.result} /> </div>`)
+        document.execCommand('insertHTML', false, `<div contenteditable='true'><img src=${reader.result} /> </div>`)
+
     }
     reader.readAsDataURL(theFile)
 }   

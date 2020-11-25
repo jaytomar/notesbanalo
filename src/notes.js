@@ -61,7 +61,7 @@ class Notes extends React.Component {
 
   SaveDoc(){
 
-    dbService.collection('users').doc(this.props.userObj.user.uid).collection('notes').doc(this.props.currentDoc.id).update({
+    dbService.collection('notes').doc(this.props.currentDoc.id).update({
       doc: this.state.html,
     }).then(()=>{console.log('succesfully added')})
   }
