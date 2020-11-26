@@ -1,5 +1,6 @@
 .sheet{
     display: flex;
+    flex-direction: column;
     margin-left: 200px;
     width: 1000px;
     height: calc(100vh - 120px);
@@ -10,9 +11,22 @@
     overflow-y: scroll;
     overflow-x: hidden;
     padding-bottom: 20px;
-
-
 }
+
+.sheet-read-only{
+    display: flex;
+    width: 1000px;
+    height: calc(100vh - 120px);
+    background-color: white;
+    padding-top: 50px;
+    box-shadow: 0 10px 50px rgb(221, 221, 221);
+    z-index: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+
+
 .App{
     display: flex;
     align-items: center;
@@ -21,16 +35,15 @@
 }
 
 .editable{
-    height: 100%;
-    padding: 50px;
+    padding: 0 50px 0 50px;
     display: flex;
     align-items: center;
     place-items: center;
     border: 0;
     width: inherit;
     display:inline-block;
-    padding-bottom: 200px;
 }
+
 .editable:focus, input:focus{
 outline: none;
 }
@@ -205,4 +218,31 @@ nav{
     border-radius: 10px;
     background-color: rgb(55, 16, 95);
 
+}
+
+.new-doc-popup{
+    position: absolute;
+    z-index: 2;
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -75px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px grey;
+}
+
+.new-doc-popup form {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.new-doc-popup input {
+    margin: 5px;
 }

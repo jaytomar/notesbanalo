@@ -1,17 +1,19 @@
 import Auth from './auth'
 import Main from './main'
-import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+import SharedNote from './SharedNote'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-const AppRouter = ({isLogged, userObj}) => {
+const AppRouter = ({isLoggedIn, userObj}) => {
+  
     return(
       <Router>
         <Switch>
-          {isLogged ? (
+          <Route exact path='/notes/:id' component={SharedNote}>
+          </Route>
+          {isLoggedIn ? (
             <>
               <Route exact path=''>
-              <div className="">
-              <Main userObj={userObj}/>
-              </div>
+                <Main userObj={userObj}/>
               </Route>
             </>
           ):(
@@ -20,6 +22,7 @@ const AppRouter = ({isLogged, userObj}) => {
             </Route>
             )
           }
+
         </Switch>
       </Router>
  

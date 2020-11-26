@@ -19,14 +19,14 @@ const App = () => {
       else{
         setLoggedin(false);
       }
+      setInit(true)
     })
-    setInit(true)
   },[])
   
   return(
     <>
     {
-      initialize ? <AppRouter isLogged={isLoggedIn} userObj={userObj}/> : "initialize"
+      initialize ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "initialize"
     }
     </>
     );
