@@ -15,6 +15,7 @@
 
 .sheet-read-only{
     display: flex;
+    flex-direction: column;
     width: 1000px;
     height: calc(100vh - 120px);
     background-color: white;
@@ -35,13 +36,10 @@
 }
 
 .editable{
+    flex-direction: column;
     padding: 0 50px 0 50px;
     display: flex;
-    align-items: center;
-    place-items: center;
     border: 0;
-    width: inherit;
-    display:inline-block;
 }
 
 .editable:focus, input:focus{
@@ -186,7 +184,7 @@ nav{
 
 .editable h2{
     position: relative;
-    border-left: 8px solid rebeccapurple;
+    border-left: 8px solid grey;
     padding-left: 10px;
 }
 
@@ -245,4 +243,26 @@ nav{
 
 .new-doc-popup input {
     margin: 5px;
+}
+
+.doc-title{
+    color:rebeccapurple;
+}
+
+.share-menu-container{
+    display: flex;
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    top: 55px;
+    right:150px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px grey;
+}
+
+.share-menu{
+    margin: auto;
 }

@@ -7,7 +7,7 @@ import  { dbService } from './fbase'
 
 
 const SharedNote = ({match}) => {
-const[html,setHtml]=useState('')
+const[html,setHtml]=useState({id:'test'})
 
 useEffect(()=>{
     dbService
@@ -15,7 +15,10 @@ useEffect(()=>{
     .get()
     .then((res)=>{
         if (res.exists) {
-            setHtml(res.data().doc)
+            setHtml(res.data())
+        }
+        else{
+            setHtml('')
         }
     })
 },[])
@@ -24,14 +27,30 @@ useEffect(()=>{
 
     return(
         <div className="App default">
-            <div className='sheet-read-only'>
-            <ContentEditable
-            className='editable'
-            html={html}
-            disabled={true}
-            spellCheck='false'
-            />
-            </div>
+        {html.id ? (
+        <div className='sheet-read-only'>
+        <div>
+          <b>
+          <p className="editable doc-title">{html.name}</p>
+          </b>
+        </div>
+        <ContentEditable
+        className='editable'
+        html={html.doc}
+        disabled={true}
+        spellCheck='false'
+        />
+        </div>
+        )
+            :(
+                <div>
+                <b>
+                <p className="editable doc-title">Document Not Found</p>
+                </b>
+              </div>
+            )
+        }
+      
         </div>
     )
 }

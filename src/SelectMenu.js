@@ -9,7 +9,8 @@ function onMenuSelect(e){
             document.execCommand('formatblock',false,'div')
         }
         else{
-            document.execCommand('formatblock',false,style)
+            document.execCommand('formatblock',false,'div')
+            document.execCommand(style)
         }
     }
     else if((style==='H1' || style==='H2' || style==='H3') && node!=='LI'){

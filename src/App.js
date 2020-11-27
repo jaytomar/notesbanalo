@@ -26,7 +26,7 @@ const App = () => {
   return(
     <>
     {
-      initialize ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "initialize"
+      initialize ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : ""
     }
     </>
     );
