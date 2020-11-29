@@ -9,8 +9,15 @@ function onMenuSelect(e){
             document.execCommand('formatblock',false,'div')
         }
         else{
-            document.execCommand('formatblock',false,'div')
-            document.execCommand(style)
+            if (style==='H1' || style==='H2' || style==='H3') {
+                document.execCommand('formatblock',false,style)
+            }
+            else{
+                document.execCommand('formatblock',false,'div')
+                document.execCommand('removeFormat',false);
+                document.execCommand(style,false);
+
+            }
         }
     }
     else if((style==='H1' || style==='H2' || style==='H3') && node!=='LI'){

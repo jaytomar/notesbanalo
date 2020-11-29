@@ -4,9 +4,7 @@ import "./app.css";
 import SelectMenu from "./SelectMenu";
 import SlashMenu from "./SlashMenu";
 import { dbService } from "./fbase";
-import {
-  extract,
-} from 'oembed-parser';
+import { extract } from "oembed-parser";
 // var htmlcopy='<div class="editable" spellcheck="false" contenteditable="true"><h1>Heading </h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><hr><h1>Heading 2</h1><div style="text-align: left;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <b>ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </b>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehe<i>nderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt m</i>ollit anim id est laborum.</div><div style="text-align: right; "><div><br style="text-align: start;"></div></div><div><br></div><p> </p></div>'
 const getCaretCoordinates = () => {
   let x, y, width;
@@ -44,10 +42,9 @@ class Notes extends React.Component {
     this.mouseUp = this.mouseUp.bind(this);
     this.onKeyDownHandler = this.onKeyDownHandler.bind(this);
     this.SaveDoc = this.SaveDoc.bind(this);
-    this.onPaste=this.onPaste.bind(this)
+    this.onPaste = this.onPaste.bind(this);
   }
   componentDidUpdate() {
-
     if (this.props.currentDoc.id != this.state.currentDoc.id) {
       this.setState({
         currentDoc: this.props.currentDoc,
@@ -55,28 +52,31 @@ class Notes extends React.Component {
       });
     }
   }
-  onPaste =(e) =>{
-    const embed=e.clipboardData.getData('text')
-    const url = 'https://www.youtube.com/watch?v=8jPQjjsBbIc';
+  onPaste = (e) => {
+    const embed = e.clipboardData.getData("text");
+    const url = "https://www.youtube.com/watch?v=8jPQjjsBbIc";
 
-    extract(url).then((oembed) => {
-      console.log(oembed);
-    }).catch((err) => {
-      console.trace(err);
-    });
-  }
-
-  
-  SaveDoc() {
-    dbService
-      .collection("notes")
-      .doc(this.props.currentDoc.id)
-      .update({
-        doc: this.state.html,
+    extract(url)
+      .then((res) => {
+        console.log(res);
       })
-      .then(() => {
-        console.log("succesfully added");
+      .catch((err) => {
+        console.trace(err);
       });
+  };
+
+  SaveDoc() {
+    if (this.state.html != null) {
+      dbService
+        .collection("notes")
+        .doc(this.props.currentDoc.id)
+        .update({
+          doc: this.state.html,
+        })
+        .then(() => {
+          console.log("succesfully added");
+        });
+    }
   }
   onKeyDownHandler = (e) => {
     if (e.key == "." && this.state.prevkey == ".") {
@@ -98,6 +98,7 @@ class Notes extends React.Component {
       });
     }
   };
+
   mouseUp = () => {
     const selection = document.getSelection();
     if (selection.type != "None") {
@@ -132,8 +133,6 @@ class Notes extends React.Component {
   }
 
   render = () => {
-    const date = this.state.currentDoc.createdAt
-    const dateobj = date
     return (
       <div>
         <div
@@ -150,7 +149,9 @@ class Notes extends React.Component {
             )}
             <div>
               <b>
-              <p className="editable doc-title">{this.state.currentDoc.name}</p>
+                <p className="editable doc-title">
+                  {this.state.currentDoc.name}
+                </p>
               </b>
             </div>
             <ContentEditable
@@ -160,6 +161,7 @@ class Notes extends React.Component {
               onChange={this.onChangeHandler}
               onMouseDown={this.onMouseDownHandler}
               onPaste={this.onPaste}
+              onBlur={this.SaveDoc}
               spellCheck="false"
             />
             <button onClick={this.SaveDoc} className="save-btn">

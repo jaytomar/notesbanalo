@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import "./app.css";
 import Notes from "./notes";
 import NewDocPopup from "./NewDocPopup";
-import ShareMenu from './sharemenu'
-
+import ShareMenu from "./sharemenu";
+import SiderBarComponent from "./sidebarcomponent";
 
 const Main = ({ userObj }) => {
   const docsarr = [
@@ -15,11 +15,9 @@ const Main = ({ userObj }) => {
       doc: "",
     },
   ];
-
-  const onShare = (e) => {
-    console.log(e);
+  const closePopup = () => {
+    setNewDocForm(false)
   }
-
   const signOut = () => {
     authService.signOut();
   };
@@ -32,7 +30,7 @@ const Main = ({ userObj }) => {
   };
 
   const shareDoc = (e) => {
-    setisShareMenuOpen(!isShareMenuOpen)
+    setisShareMenuOpen(!isShareMenuOpen);
   };
 
   const deleteNote = (e) => {
@@ -47,7 +45,7 @@ const Main = ({ userObj }) => {
       });
     const deleteText =
       '<div class="editable" spellcheck="false" contenteditable="false">Document Deleted</div>';
-    setCurrentDoc(docsarr)
+    setCurrentDoc(docsarr);
     setHtml(deleteText);
   };
 
@@ -67,7 +65,7 @@ const Main = ({ userObj }) => {
       createdAt: Date.now(),
       name: docName,
       doc:
-        "You can highlight this text to apply styles. type the period (.) key twice for more option",
+        "<div>You can highlight this text to apply styles. type the period (.) key twice for more option</div>",
     };
     dbService.collection("notes").doc(uuid).set(data);
 
@@ -103,35 +101,29 @@ const Main = ({ userObj }) => {
   return (
     <div>
       <nav>
-        <p className="logo">notebanalo</p>
+        <p className="logo"><b>notes</b>banalo</p>
         <button onClick={signOut} className="sign-out-btn">
           sign out
         </button>
-        <button onClick={shareDoc} className="sign-out-btn">
-          Share
-        </button>
+        {currentDoc.id &&
+          (
+          <button onClick={shareDoc} className="sign-out-btn">Share</button>
+          )
+        }
+        
       </nav>
-
-      {newDocForm && <NewDocPopup createNewDoc={createNewDoc} />}
-      {isShareMenuOpen && <ShareMenu currentDoc={currentDoc}/>}
+      {newDocForm && <NewDocPopup createNewDoc={createNewDoc} closePopup={closePopup}/>}
+      {isShareMenuOpen && <ShareMenu currentDoc={currentDoc} />}
       <div className="sidebar">
         <button onClick={newDoc} className="new-doc-btn">
           new doc
         </button>
-        <div>
-          {docs.map((item, index) => {
-            return (
-              <div className="sidebar-btn-container" key={index}>
-                <button className="sidebar-btn" onClick={selectNote} id={index}>
-                  {item.name}
-                </button>
-                <button className="delete-btn" onClick={deleteNote} id={index}>
-                  <i className="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            );
-          })}
-        </div>
+        <SiderBarComponent
+          docs={docs}
+          selectNote={selectNote}
+          deleteNote={deleteNote}
+          newDoc={newDoc}
+        />
       </div>
       <Notes userObj={userObj} html={html} currentDoc={currentDoc} />
     </div>
