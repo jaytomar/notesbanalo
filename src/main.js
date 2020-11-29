@@ -7,7 +7,9 @@ import NewDocPopup from "./NewDocPopup";
 import ShareMenu from "./sharemenu";
 import SiderBarComponent from "./sidebarcomponent";
 
-const Main = ({ userObj }) => {
+const firstDoc='<h1>Welcome to Notes<b>Banalo</b></h1><div>You can <b style="background-color: rgb(218, 247, 166);">create </b>and <b style="background-color: rgb(218, 247, 166);">share </b>documents. You can style your text, <b>make it bold</b>, <i>italics </i>or <strike style="">strikethrough</strike>.</div><div><span style="background-color: rgb(218, 247, 166);">you can highlight your text.</span></div><div><br></div><h3>and you can add images! [press the period (.) key twice]</h3><div><img src="https://i.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.webp"><br></div>'
+
+const Main = ({ userObj, isNewUser }) => {
   const docsarr = [
     {
       id: "",
@@ -73,6 +75,19 @@ const Main = ({ userObj }) => {
   };
 
   useEffect(() => {
+    if (isNewUser) {
+      const docName = "Your First Document";
+      var uuid = uuidv4();
+      var data = {
+        user: userObj.user.uid,
+        id: uuid,
+        createdAt: Date.now(),
+        name: docName,
+        doc: firstDoc,
+      };
+      dbService.collection("notes").doc(uuid).set(data);
+  
+    }
     fetchDocs();
   }, []);
 

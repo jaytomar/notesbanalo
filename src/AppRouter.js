@@ -2,8 +2,10 @@ import Auth from './auth'
 import Main from './main'
 import SharedNote from './SharedNote'
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+import { useState } from 'react'
 
 const AppRouter = ({isLoggedIn, userObj}) => {
+  const[isNewUser, setIsNewUser]=useState(false);
     return(
       <Router>
         <Switch>
@@ -12,12 +14,12 @@ const AppRouter = ({isLoggedIn, userObj}) => {
           {isLoggedIn ? (
             <>
               <Route exact path='/'>
-                <Main userObj={userObj}/>
+                <Main userObj={userObj} isNewUser={isNewUser}/>
               </Route>
             </>
           ):(
             <Route exact path='/'>
-              <Auth />
+              <Auth setIsNewUser={setIsNewUser}/>
             </Route>
             )
           }

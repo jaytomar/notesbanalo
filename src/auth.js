@@ -1,7 +1,7 @@
 import React from 'react'
 import firebaseInstance, { authService } from './fbase'
 
-const Auth = () => {
+const Auth = ({setIsNewUser}) => {
 // const[email, setEmail]=useState('')
 // const[password, setPassword]=useState('')
 
@@ -19,6 +19,14 @@ const Auth = () => {
 const onSocialClick = async (e) => {
   let provider = new firebaseInstance.auth.GoogleAuthProvider();
   await authService.signInWithPopup(provider)
+  .then((res)=>{
+    if(res.additionalUserInfo.isNewUser){
+      setIsNewUser(true)
+    }
+    else{
+      setIsNewUser(false)
+    }
+  })
 }
   
     return(
