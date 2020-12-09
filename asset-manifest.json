@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/notesbanalo/static/css/main.af3d7031.chunk.css",
-    "main.js": "/notesbanalo/static/js/main.9f08c8ff.chunk.js",
-    "main.js.map": "/notesbanalo/static/js/main.9f08c8ff.chunk.js.map",
+    "main.js": "/notesbanalo/static/js/main.cda1e67e.chunk.js",
+    "main.js.map": "/notesbanalo/static/js/main.cda1e67e.chunk.js.map",
     "runtime-main.js": "/notesbanalo/static/js/runtime-main.4c946145.js",
     "runtime-main.js.map": "/notesbanalo/static/js/runtime-main.4c946145.js.map",
-    "static/js/2.b92f522d.chunk.js": "/notesbanalo/static/js/2.b92f522d.chunk.js",
-    "static/js/2.b92f522d.chunk.js.map": "/notesbanalo/static/js/2.b92f522d.chunk.js.map",
+    "static/js/2.54ce9b27.chunk.js": "/notesbanalo/static/js/2.54ce9b27.chunk.js",
+    "static/js/2.54ce9b27.chunk.js.map": "/notesbanalo/static/js/2.54ce9b27.chunk.js.map",
     "static/js/3.d5f9e649.chunk.js": "/notesbanalo/static/js/3.d5f9e649.chunk.js",
     "static/js/3.d5f9e649.chunk.js.map": "/notesbanalo/static/js/3.d5f9e649.chunk.js.map",
     "index.html": "/notesbanalo/index.html",
     "static/css/main.af3d7031.chunk.css.map": "/notesbanalo/static/css/main.af3d7031.chunk.css.map",
-    "static/js/2.b92f522d.chunk.js.LICENSE.txt": "/notesbanalo/static/js/2.b92f522d.chunk.js.LICENSE.txt"
+    "static/js/2.54ce9b27.chunk.js.LICENSE.txt": "/notesbanalo/static/js/2.54ce9b27.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4c946145.js",
-    "static/js/2.b92f522d.chunk.js",
+    "static/js/2.54ce9b27.chunk.js",
     "static/css/main.af3d7031.chunk.css",
-    "static/js/main.9f08c8ff.chunk.js"
+    "static/js/main.cda1e67e.chunk.js"
   ]
 }
