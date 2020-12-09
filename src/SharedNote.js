@@ -16,6 +16,7 @@ useEffect(()=>{
     .then((res)=>{
         if (res.exists) {
             setHtml(res.data())
+            document.title=res.data().name;
         }
         else{
             setHtml('')
